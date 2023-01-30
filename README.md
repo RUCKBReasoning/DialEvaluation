@@ -25,11 +25,6 @@ Before running the code, please change `model` in the script according to the `U
 
 ## Human Evaluation
 
-to be complete
-
-
-## Implicit Human Evaluation
-
 ### 1. Create database schema
 
 The code for creating database is located in human evaluation/database.
@@ -40,7 +35,16 @@ You need to first modify line 4 and input your own ip address.
 
 Then, run init.py to initialize mongodb.
 
-### 2. Deploy backend
+### 2. Self-Chat Generation
+
+The code for generating self-chat dialogue is located in human evaluation/self-chat generation.
+
+* `db_op.py`: Methods for manipulating mongodb.
+* `self_chat_creator.py`: Generate self-chat dialogue.
+
+Run self_chat_creator to generate self-chat dialogue.
+
+### 3. Deploy backend
 
 The code for deploying backend is located in human evaluation/backend.
 
@@ -52,9 +56,43 @@ You should first modify line 4 in db_op.py and input your own mongodb informatio
 
 Then, run app.py to deploy the backend.
 
-### 3. Deploy frontend
+### 4. Deploy frontend
 
 The code for deploying frontend is located in human evaluation/frontend
+
+run `npm install` to setup the project.
+
+run `npm run dev` to compile and hot-reload for development
+
+run `npm run build` to compile and minify for production
+
+## Implicit Human Evaluation
+
+### 1. Create database schema
+
+The code for creating database is located in implicit human evaluation/database.
+
+* `init.py`: Create the mongodb database and collections.
+
+You need to first modify line 4 and input your own ip address.
+
+Then, run init.py to initialize mongodb.
+
+### 2. Deploy backend
+
+The code for deploying backend is located in implicit human evaluation/backend.
+
+* `db_op.py`: Methods for manipulating mongodb.
+* `chatbot_api`: Getting response from available chatbot.
+* `app.py`: Deploy the flask backend.
+
+You should first modify line 4 in db_op.py and input your own mongodb information.
+
+Then, run app.py to deploy the backend.
+
+### 3. Deploy frontend
+
+The code for deploying frontend is located in implicit human evaluation/frontend
 
 run `npm install` to setup the project.
 
