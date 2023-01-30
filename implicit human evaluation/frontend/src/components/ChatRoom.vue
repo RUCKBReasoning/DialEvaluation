@@ -37,29 +37,6 @@ export default {
     if (window.navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
       this.isPhone = true
     if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == "micromessenger") {
-      // 检查当前url中是否包含code
-      const url = new URL(window.location.href);
-      const code = url.searchParams.get("code");
-      if (code == null) {
-        const appid = 'wx1e28279cb6a9a711'
-        const redirect_uri = encodeURIComponent(`https://aigc.aminer.cn/racetrack/v2/`)
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-          'appid=' + appid +
-          '&redirect_uri=' + redirect_uri +
-          '&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
-      } else {
-        // 将code发送给后端，获取openid
-        axios.get(`/wechat-go/api/v1/user/token/${code}`).then(res => {
-          if (res.data.code == 200) {
-            this.openid = res.data.data.nickname + '-' + res.data.data.openid
-          }
-        })
-        // 获取机器人列表
-        http.post('/backend/bot').then(res => {
-          this.botList = res.data.bot_list
-          this.introVisable = true
-        })
-      }
     } else {
       // 获取机器人列表
       http.post('/backend/bot').then(res => {
