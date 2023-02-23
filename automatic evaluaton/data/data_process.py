@@ -74,7 +74,7 @@ def DuConv():
     datafile.close() 
 
 
-def KonwVonc():
+def KnowVonc():
     with open(r'KonwConv/konw_conv_1204.json', 'r', encoding='utf-8') as datafile:
         with open(r'KonwConv/test.txt', 'w', encoding='utf-8') as datafile2:
             for line in datafile:
@@ -96,4 +96,4 @@ if __name__ == "__main__":
     # NaturalConv()
     # DuSinc()
     # DuConv()
-    KonwVonc()
+    KnowVonc()
