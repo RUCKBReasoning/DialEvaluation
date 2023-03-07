@@ -15,7 +15,7 @@ def get_msg_from_xdai(msg_send):
     }
     for i in range(len(msg_send)):
         data['msgList'].append({"talker": "user" if i % 2 == 0 else "bot", "text": msg_send[i]})
-    res = requests.post(url='http://aigc.aminer.cn/test/xd/v2/query', json=data)
+    res = requests.post(url='URL', json=data)
     if res.status_code == 200:
         return res.json()['data']['reply']
     else:
@@ -65,7 +65,7 @@ def get_msg_from_plato(msg_send):
 def get_msg_from_deployed_model(model_name, msg_send):
     """ 获取已部署模型的回复 """
     res = requests.post(
-        url='http://36.103.203.210:8001/' + model_name.lower(),
+        url='URL' + model_name.lower(),
         json={'content': msg_send}
     )
     if res.status_code == 200:
@@ -81,7 +81,7 @@ def get_msg_from_chatbot(bot_name, msg_send, bot_msg):
     elif bot_name == 'PLATO-2':
         msg_received = get_msg_from_plato(msg_send)
     elif bot_name == 'GLM-Finetune':
-        res = requests.post(url='http://36.103.203.210:8008/generate',
+        res = requests.post(url='URL',
                             json={'content': msg_send})
         if res.status_code == 200:
             msg_received = res.json()['data']
